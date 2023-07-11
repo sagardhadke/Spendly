@@ -6,4 +6,8 @@
     </style>
 
     <style name="Theme.Spendly" parent="Base.Theme.Spendly" />
+
+    <style name="App.CustomIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/greenDark</item>
+    </style>
 </resources>
