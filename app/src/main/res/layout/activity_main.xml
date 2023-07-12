@@ -13,6 +13,7 @@
         android:background="@color/green"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
+        app:titleTextColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -94,9 +95,11 @@
     </com.google.android.material.tabs.TabLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tabLayout">
@@ -119,6 +122,7 @@
                 android:id="@+id/textView6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="3d"
                 android:gravity="center"
                 android:text="0.0"
                 android:textColor="#4CAF50" />
@@ -142,9 +146,10 @@
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
                 android:gravity="center"
                 android:text="0.0"
-                android:textColor="#C11313" />
+                android:textColor="#EF1000" />
         </LinearLayout>
 
         <LinearLayout
@@ -165,6 +170,7 @@
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
                 android:gravity="center"
                 android:text="0.0" />
         </LinearLayout>
@@ -198,4 +204,12 @@
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_plus" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
