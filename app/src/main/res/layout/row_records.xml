@@ -12,11 +12,11 @@
         android:layout_marginStart="8dp"
         android:background="@drawable/category_bg"
         android:padding="10dp"
-        android:tint="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayout3"
-        app:srcCompat="@drawable/ic_investment" />
+        app:srcCompat="@drawable/ic_investment"
+        app:tint="@color/white" />
 
     <LinearLayout
         android:id="@+id/linearLayout3"

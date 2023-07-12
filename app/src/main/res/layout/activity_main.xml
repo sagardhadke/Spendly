@@ -122,7 +122,7 @@
                 android:id="@+id/textView6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3d"
+                android:layout_marginTop="3dp"
                 android:gravity="center"
                 android:text="0.0"
                 android:textColor="#4CAF50" />
@@ -206,6 +206,7 @@
         app:srcCompat="@drawable/ic_plus" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/records_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
         tools:listitem="@layout/row_records"

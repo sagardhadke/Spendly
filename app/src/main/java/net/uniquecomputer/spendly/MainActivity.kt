@@ -14,6 +14,11 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.Toolbar)
        supportActionBar?.title = "Records"
+
+        binding.floatingActionButton.setOnClickListener {
+            AddRecordsFragment().show(supportFragmentManager, null)
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

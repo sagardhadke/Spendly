@@ -5,4 +5,6 @@
 
     <color name="green">#2acd72</color>
     <color name="greenDark">#0CDB68</color>
+
+    <color name="textColor">#353535</color>
 </resources>
