@@ -1,8 +1,10 @@
-package net.uniquecomputer.spendly
+package net.uniquecomputer.spendly.Activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import net.uniquecomputer.spendly.Fragments.AddRecordsFragment
+import net.uniquecomputer.spendly.R
 import net.uniquecomputer.spendly.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

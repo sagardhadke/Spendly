@@ -1,4 +1,4 @@
-package net.uniquecomputer.spendly
+package net.uniquecomputer.spendly.Fragments
 
 import android.app.DatePickerDialog
 import android.os.Build
@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.DatePicker
 import androidx.annotation.RequiresApi
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import net.uniquecomputer.spendly.R
 import net.uniquecomputer.spendly.databinding.FragmentAddRecordsBinding
 import java.text.SimpleDateFormat
 import java.util.Calendar

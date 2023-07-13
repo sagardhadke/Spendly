@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/dialog_bg"
-    tools:context=".AddRecordsFragment">
+    tools:context=".Fragments.AddRecordsFragment">
 
     <ScrollView
         android:layout_width="match_parent"
