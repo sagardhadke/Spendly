@@ -1,5 +1,6 @@
 package net.uniquecomputer.spendly.Fragments
 
+import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.os.Build
 import android.os.Bundle
@@ -12,6 +13,7 @@ import androidx.annotation.RequiresApi
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import net.uniquecomputer.spendly.R
 import net.uniquecomputer.spendly.databinding.FragmentAddRecordsBinding
+import net.uniquecomputer.spendly.databinding.ListDialogBinding
 import java.text.SimpleDateFormat
 import java.util.Calendar
 
@@ -74,6 +76,12 @@ class AddRecordsFragment : BottomSheetDialogFragment() {
             }
             datePickerDialog.show()
 
+        }
+
+        binding.category.setOnClickListener {
+            val dialogBinding = ListDialogBinding.inflate(inflater)
+            val categoryDialog: AlertDialog = AlertDialog.Builder(context).create()
+            categoryDialog.setView(dialogBinding.root)
         }
 
         return binding.root
