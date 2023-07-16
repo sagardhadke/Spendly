@@ -1,8 +1,11 @@
 package net.uniquecomputer.spendly.Adapters
 
 import android.content.Context
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import net.uniquecomputer.spendly.Model.ModelCategory
 import net.uniquecomputer.spendly.databinding.SampleCategoryItemBinding
@@ -20,10 +23,19 @@ class CategoriyAdapter(private val context: Context,val categoryArrayList: Array
        return categoryArrayList.size
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.categoryImage.setImageResource(categoryArrayList[position].categoryImage)
         holder.binding.categoryText.text = categoryArrayList[position].categoryText
-        holder.binding.categoryImage.setColorFilter(categoryArrayList[position].categoryColor)
+        holder.itemView.setOnClickListener {
+            categoryArrayList[position].categoryText
+        }
+//        holder.binding.categoryImage.backgroundTintList = context.getColorStateList(categoryArrayList[position].categoryImage)
+//        holder.binding.categoryImage.setColorFilter(ContextCompat.getColor(context, categoryArrayList[position].categoryImage))
+
+
+
+
 
     }
 

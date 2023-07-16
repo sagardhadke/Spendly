@@ -4,24 +4,33 @@ import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.os.Build
 import android.os.Bundle
+import android.provider.SyncStateContract.Constants
 import android.view.LayoutInflater
 import android.view.SurfaceControl.Transaction
 import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
 import androidx.annotation.RequiresApi
+import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import net.uniquecomputer.spendly.Adapters.CategoriyAdapter
+import net.uniquecomputer.spendly.Model.ModelCategory
 import net.uniquecomputer.spendly.R
 import net.uniquecomputer.spendly.databinding.FragmentAddRecordsBinding
 import net.uniquecomputer.spendly.databinding.ListDialogBinding
 import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Locale
+import java.util.Locale.Category
 
 
 class AddRecordsFragment : BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentAddRecordsBinding
     var transaction: Transaction? = null
+
+    private lateinit var categoriyAdapter: CategoriyAdapter
+    private lateinit var categoryArrayList: ArrayList<ModelCategory>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,8 +91,24 @@ class AddRecordsFragment : BottomSheetDialogFragment() {
             val dialogBinding = ListDialogBinding.inflate(inflater)
             val categoryDialog: AlertDialog = AlertDialog.Builder(context).create()
             categoryDialog.setView(dialogBinding.root)
+
+            categoryArrayList = ArrayList()
+            categoryArrayList.add(ModelCategory("Salary",R.drawable.ic_salary,R.color.category1))
+            categoryArrayList.add(ModelCategory("Business",R.drawable.ic_business,R.color.category2))
+            categoryArrayList.add(ModelCategory("Investment",R.drawable.ic_investment,R.color.category3))
+            categoryArrayList.add(ModelCategory("Loan",R.drawable.ic_loan,R.color.category4))
+            categoryArrayList.add(ModelCategory("Rent",R.drawable.ic_rent,R.color.category5))
+            categoryArrayList.add(ModelCategory("Other",R.drawable.ic_other,R.color.category6))
+
+            categoriyAdapter = CategoriyAdapter(requireContext(),categoryArrayList)
+            dialogBinding.recyclerView.layoutManager = GridLayoutManager(requireContext(),3)
+            dialogBinding.recyclerView.adapter = categoriyAdapter
+
+            categoryDialog.show()
         }
 
         return binding.root
     }
+
+
 }

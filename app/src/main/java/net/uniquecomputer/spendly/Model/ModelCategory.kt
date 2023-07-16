@@ -1,5 +1,5 @@
 package net.uniquecomputer.spendly.Model
 
-class ModelCategory(val categoryImage : Int, val categoryText : String, val categoryColor : Int){
+class ModelCategory(val categoryText : String , val categoryImage : Int,  val categoryColor : Int){
 
 }
