@@ -20,6 +20,16 @@ class MainActivity : AppCompatActivity() {
 
         updateDate()
 
+        binding.nextDateBtn.setOnClickListener {
+            calender.add(Calendar.DAY_OF_MONTH, 1)
+            updateDate()
+        }
+
+        binding.previousDateBtn.setOnClickListener {
+            calender.add(Calendar.DAY_OF_MONTH, -1)
+            updateDate()
+        }
+
         setSupportActionBar(binding.Toolbar)
        supportActionBar?.title = "Records"
 
