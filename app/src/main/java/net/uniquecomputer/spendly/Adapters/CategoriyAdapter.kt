@@ -52,14 +52,6 @@ class CategoriyAdapter(private var context: Context, val categoryArrayList: Arra
             categoryClickListener?.onCategoryClicked(position = position)
         }
 
-
-//        holder.itemView.setOnClickListener {
-//            categoryArrayList[position].categoryText
-//        }
-
-
-
-
     }
 
 }

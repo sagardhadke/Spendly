@@ -1,5 +1,6 @@
 package net.uniquecomputer.spendly.Fragments
 
+import android.accounts.Account
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.os.Build
@@ -11,8 +12,11 @@ import android.view.ViewGroup
 import android.widget.DatePicker
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import net.uniquecomputer.spendly.Adapters.AccountAdapter
 import net.uniquecomputer.spendly.Adapters.CategoriyAdapter
+import net.uniquecomputer.spendly.Model.ModelAccount
 import net.uniquecomputer.spendly.Model.ModelCategory
 import net.uniquecomputer.spendly.R
 import net.uniquecomputer.spendly.databinding.FragmentAddRecordsBinding
@@ -28,6 +32,9 @@ class AddRecordsFragment : BottomSheetDialogFragment() {
 
     private lateinit var categoriyAdapter: CategoriyAdapter
     private lateinit var categoryArrayList: ArrayList<ModelCategory>
+
+    private lateinit var accountAdapter: AccountAdapter
+    private lateinit var accountArrayList: ArrayList<ModelAccount>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -108,6 +115,35 @@ class AddRecordsFragment : BottomSheetDialogFragment() {
             dialogBinding.recyclerView.adapter = categoriyAdapter
 
             categoryDialog.show()
+        }
+
+        binding.account.setOnClickListener {
+            val dialogABinding = ListDialogBinding.inflate(inflater)
+            val accountDialog: AlertDialog = AlertDialog.Builder(context).create()
+            accountDialog.setView(dialogABinding.root)
+
+            accountArrayList = ArrayList()
+            accountArrayList.add(ModelAccount(0.0,"Bank"))
+            accountArrayList.add(ModelAccount(0.0,"Card"))
+            accountArrayList.add(ModelAccount(0.0,"Cash"))
+            accountArrayList.add(ModelAccount(0.0,"Savings"))
+            accountArrayList.add(ModelAccount(0.0,"Wallet"))
+            accountArrayList.add(ModelAccount(0.0,"Paytm"))
+            accountArrayList.add(ModelAccount(0.0,"Others"))
+
+            accountAdapter = AccountAdapter(requireContext(),accountArrayList)
+            accountAdapter.accountClickListener = object : AccountAdapter.AccountClickListener {
+                override fun onAccountClicked(position: Int) {
+                    binding.account.setText(accountArrayList[position].accountName)
+                    accountDialog.dismiss()
+                }
+
+            }
+            dialogABinding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+            dialogABinding.recyclerView.adapter = accountAdapter
+
+            accountDialog.show()
+
         }
 
         return binding.root
