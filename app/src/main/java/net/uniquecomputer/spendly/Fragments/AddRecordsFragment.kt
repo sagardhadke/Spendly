@@ -4,7 +4,6 @@ import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.os.Build
 import android.os.Bundle
-import android.provider.SyncStateContract.Constants
 import android.view.LayoutInflater
 import android.view.SurfaceControl.Transaction
 import android.view.View
@@ -20,8 +19,6 @@ import net.uniquecomputer.spendly.databinding.FragmentAddRecordsBinding
 import net.uniquecomputer.spendly.databinding.ListDialogBinding
 import java.text.SimpleDateFormat
 import java.util.Calendar
-import java.util.Locale
-import java.util.Locale.Category
 
 
 class AddRecordsFragment : BottomSheetDialogFragment() {
@@ -101,6 +98,12 @@ class AddRecordsFragment : BottomSheetDialogFragment() {
             categoryArrayList.add(ModelCategory("Other",R.drawable.ic_other,R.color.category6))
 
             categoriyAdapter = CategoriyAdapter(requireContext(),categoryArrayList)
+            categoriyAdapter.categoryClickListener = object : CategoriyAdapter.CategoryClickListener{
+                override fun onCategoryClicked(position: Int) {
+                    binding.category.setText(categoryArrayList[position].categoryText)
+                    categoryDialog.dismiss()
+                }
+            }
             dialogBinding.recyclerView.layoutManager = GridLayoutManager(requireContext(),3)
             dialogBinding.recyclerView.adapter = categoriyAdapter
 
