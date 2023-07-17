@@ -20,6 +20,7 @@ import net.uniquecomputer.spendly.Adapters.CategoriyAdapter
 import net.uniquecomputer.spendly.Model.ModelAccount
 import net.uniquecomputer.spendly.Model.ModelCategory
 import net.uniquecomputer.spendly.R
+import net.uniquecomputer.spendly.Utils.Helper
 import net.uniquecomputer.spendly.databinding.FragmentAddRecordsBinding
 import net.uniquecomputer.spendly.databinding.ListDialogBinding
 import java.text.SimpleDateFormat
@@ -80,9 +81,8 @@ class AddRecordsFragment : BottomSheetDialogFragment() {
                     calendar[Calendar.MONTH] = datePicker.month
                     calendar[Calendar.YEAR] = datePicker.year
 
-                    val SimpleDateFormat = SimpleDateFormat("dd MMMM, yyyy")
-                    val dateToShow: String = SimpleDateFormat.format(calendar.time)
-//                    val dateToShow: String = Helper.formatDate(calendar.time)
+//                    val SimpleDateFormat = SimpleDateFormat("dd MMMM, yyyy")
+                    val dateToShow = Helper.formatDate(calendar.time)
                     binding.date.setText(dateToShow)
 //                    transaction.setDate(calendar.time)
 //                    transaction.setId(calendar.time.time)
