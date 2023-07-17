@@ -27,12 +27,12 @@ class CategoriyAdapter(private val context: Context,val categoryArrayList: Array
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.categoryImage.setImageResource(categoryArrayList[position].categoryImage)
         holder.binding.categoryText.text = categoryArrayList[position].categoryText
+
+        holder.binding.categoryImage.backgroundTintList = context.getColorStateList(categoryArrayList[position].categoryColor)
+
         holder.itemView.setOnClickListener {
             categoryArrayList[position].categoryText
         }
-//        holder.binding.categoryImage.backgroundTintList = context.getColorStateList(categoryArrayList[position].categoryImage)
-//        holder.binding.categoryImage.setColorFilter(ContextCompat.getColor(context, categoryArrayList[position].categoryImage))
-
 
 
 
