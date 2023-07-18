@@ -1,8 +1,11 @@
 package net.uniquecomputer.spendly.Utils
 
+
 import android.icu.text.SimpleDateFormat
 import android.os.Build
+import net.uniquecomputer.spendly.R
 import java.util.Date
+
 
 open class Helper {
 
@@ -25,6 +28,7 @@ open class Helper {
             }
             return dateFormat.format(date)
         }
+
     }
 
 

@@ -30,6 +30,24 @@ open class Constants {
             categoryArrayList.add(ModelCategory("Other", R.drawable.ic_other, R.color.category6))
         }
 
+        fun getCategoryDetails(categorytext: String?): ModelCategory? {
+            for (cat in categoryArrayList) {
+                if (cat.categoryText == categorytext) {
+                    return cat
+                }
+            }
+            return null
+        }
+
+        fun getAccountsColor(accountName: String?): Int {
+            return when (accountName) {
+                "Bank" -> R.color.bank_color
+                "Cash" -> R.color.cash_color
+                "Card" -> R.color.card_color
+                else -> R.color.default_color
+            }
+        }
+
     }
 
 }

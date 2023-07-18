@@ -30,12 +30,23 @@ class RecordsAdapter(private var context: Context, private var recordsArrayList 
         holder.binding.AccountLbl.text = recordsArrayList[position].account
         holder.binding.RecordsCategories.text = recordsArrayList[position].category
 
-        if (recordsArrayList[position].type == Constants.EXPENSE) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            holder.binding.AccountLbl.backgroundTintList = context.getColorStateList(Constants.getAccountsColor(recordsArrayList[position].account)!!)
+        }
+
+        val category = Constants.getCategoryDetails(recordsArrayList[position].category)
+
+        category?.let { holder.binding.CategoryIcon.setImageResource(it.categoryImage) }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            holder.binding.CategoryIcon.backgroundTintList = context.getColorStateList(category!!.categoryColor)
+        }
+
+        if (recordsArrayList[position].type == Constants.INCOME) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 holder.binding.RecordsAmount.setTextColor(context.getColor(R.color.green))
             }
 
-        } else if (recordsArrayList[position].type == Constants.INCOME) {
+        } else if (recordsArrayList[position].type == Constants.EXPENSE) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 holder.binding.RecordsAmount.setTextColor(context.getColor(R.color.redColor))
             }
