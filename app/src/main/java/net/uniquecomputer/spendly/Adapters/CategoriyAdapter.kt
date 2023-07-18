@@ -11,7 +11,7 @@ import net.uniquecomputer.spendly.Model.ModelCategory
 import net.uniquecomputer.spendly.databinding.SampleCategoryItemBinding
 
 
-class CategoriyAdapter(private var context: Context, val categoryArrayList: ArrayList<ModelCategory>) : RecyclerView.Adapter<CategoriyAdapter.ViewHolder>(){
+class CategoriyAdapter(private var context: Context, val categoryArrayList: java.util.ArrayList<ModelCategory>) : RecyclerView.Adapter<CategoriyAdapter.ViewHolder>(){
 
     inner class ViewHolder(val binding: SampleCategoryItemBinding) : RecyclerView.ViewHolder(binding.root)
 

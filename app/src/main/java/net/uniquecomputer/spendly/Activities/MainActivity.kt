@@ -7,6 +7,7 @@ import net.uniquecomputer.spendly.Adapters.RecordsAdapter
 import net.uniquecomputer.spendly.Fragments.AddRecordsFragment
 import net.uniquecomputer.spendly.Model.RecordsModel
 import net.uniquecomputer.spendly.R
+import net.uniquecomputer.spendly.Utils.Constants
 import net.uniquecomputer.spendly.Utils.Helper
 import net.uniquecomputer.spendly.databinding.ActivityMainBinding
 import java.util.Calendar
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         calender = Calendar.getInstance()
 
         updateDate()
+        Constants.setCategories()
 
         binding.nextDateBtn.setOnClickListener {
             calender.add(Calendar.DAY_OF_MONTH, 1)

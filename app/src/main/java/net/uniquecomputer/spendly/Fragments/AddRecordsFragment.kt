@@ -1,6 +1,5 @@
 package net.uniquecomputer.spendly.Fragments
 
-import android.accounts.Account
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.os.Build
@@ -11,7 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
 import androidx.annotation.RequiresApi
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -24,7 +22,6 @@ import net.uniquecomputer.spendly.Utils.Constants
 import net.uniquecomputer.spendly.Utils.Helper
 import net.uniquecomputer.spendly.databinding.FragmentAddRecordsBinding
 import net.uniquecomputer.spendly.databinding.ListDialogBinding
-import java.text.SimpleDateFormat
 import java.util.Calendar
 
 
@@ -34,6 +31,7 @@ class AddRecordsFragment : BottomSheetDialogFragment() {
     var transaction: Transaction? = null
 
     private lateinit var categoriyAdapter: CategoriyAdapter
+
 
 
     private lateinit var accountAdapter: AccountAdapter
@@ -98,9 +96,8 @@ class AddRecordsFragment : BottomSheetDialogFragment() {
             val categoryDialog: AlertDialog = AlertDialog.Builder(context).create()
             categoryDialog.setView(dialogBinding.root)
 
-
-
             categoriyAdapter = CategoriyAdapter(requireContext(),Constants.categoryArrayList)
+
             categoriyAdapter.categoryClickListener = object : CategoriyAdapter.CategoryClickListener{
                 override fun onCategoryClicked(position: Int) {
                     binding.category.setText(Constants.categoryArrayList[position].categoryText)

@@ -1,18 +1,19 @@
 package net.uniquecomputer.spendly.Utils
 
-import net.uniquecomputer.spendly.Model.ModelAccount
 import net.uniquecomputer.spendly.Model.ModelCategory
 import net.uniquecomputer.spendly.R
 
 open class Constants {
 
     companion object{
+
         var INCOME = "INCOME"
         var EXPENSE = "EXPENSE"
 
+
         lateinit var categoryArrayList: ArrayList<ModelCategory>
-        fun setCategories(){
-            categoryArrayList = ArrayList()
+       fun setCategories(){
+           categoryArrayList = ArrayList()
             categoryArrayList.add(ModelCategory("Salary", R.drawable.ic_salary, R.color.category1))
             categoryArrayList.add(
                 ModelCategory("Business",
