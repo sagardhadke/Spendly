@@ -20,6 +20,7 @@ import net.uniquecomputer.spendly.Adapters.CategoriyAdapter
 import net.uniquecomputer.spendly.Model.ModelAccount
 import net.uniquecomputer.spendly.Model.ModelCategory
 import net.uniquecomputer.spendly.R
+import net.uniquecomputer.spendly.Utils.Constants
 import net.uniquecomputer.spendly.Utils.Helper
 import net.uniquecomputer.spendly.databinding.FragmentAddRecordsBinding
 import net.uniquecomputer.spendly.databinding.ListDialogBinding
@@ -33,7 +34,7 @@ class AddRecordsFragment : BottomSheetDialogFragment() {
     var transaction: Transaction? = null
 
     private lateinit var categoriyAdapter: CategoriyAdapter
-    private lateinit var categoryArrayList: ArrayList<ModelCategory>
+
 
     private lateinit var accountAdapter: AccountAdapter
     private lateinit var accountArrayList: ArrayList<ModelAccount>
@@ -97,18 +98,12 @@ class AddRecordsFragment : BottomSheetDialogFragment() {
             val categoryDialog: AlertDialog = AlertDialog.Builder(context).create()
             categoryDialog.setView(dialogBinding.root)
 
-            categoryArrayList = ArrayList()
-            categoryArrayList.add(ModelCategory("Salary",R.drawable.ic_salary,R.color.category1))
-            categoryArrayList.add(ModelCategory("Business",R.drawable.ic_business,R.color.category2))
-            categoryArrayList.add(ModelCategory("Investment",R.drawable.ic_investment,R.color.category3))
-            categoryArrayList.add(ModelCategory("Loan",R.drawable.ic_loan,R.color.category4))
-            categoryArrayList.add(ModelCategory("Rent",R.drawable.ic_rent,R.color.category5))
-            categoryArrayList.add(ModelCategory("Other",R.drawable.ic_other,R.color.category6))
 
-            categoriyAdapter = CategoriyAdapter(requireContext(),categoryArrayList)
+
+            categoriyAdapter = CategoriyAdapter(requireContext(),Constants.categoryArrayList)
             categoriyAdapter.categoryClickListener = object : CategoriyAdapter.CategoryClickListener{
                 override fun onCategoryClicked(position: Int) {
-                    binding.category.setText(categoryArrayList[position].categoryText)
+                    binding.category.setText(Constants.categoryArrayList[position].categoryText)
                     categoryDialog.dismiss()
                 }
             }
