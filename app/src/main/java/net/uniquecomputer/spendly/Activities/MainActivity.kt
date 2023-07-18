@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import androidx.recyclerview.widget.LinearLayoutManager
+import io.realm.Realm
 import net.uniquecomputer.spendly.Adapters.RecordsAdapter
 import net.uniquecomputer.spendly.Fragments.AddRecordsFragment
 import net.uniquecomputer.spendly.Model.RecordsModel
@@ -15,12 +16,14 @@ import java.util.Calendar
 import java.util.Date
 
 class MainActivity : AppCompatActivity() {
-    lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
     lateinit var calender: Calendar
 
-    lateinit var recordsAdapter: RecordsAdapter
+    private lateinit var recordsAdapter: RecordsAdapter
 
-    lateinit var recordsArrayList: ArrayList<RecordsModel>
+   private lateinit var recordsArrayList: ArrayList<RecordsModel>
+
+    private lateinit var realm: Realm
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -28,6 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         calender = Calendar.getInstance()
 
+        setupDatabase()
         updateDate()
         Constants.setCategories()
 
@@ -60,6 +64,11 @@ class MainActivity : AppCompatActivity() {
             AddRecordsFragment().show(supportFragmentManager, null)
         }
 
+    }
+
+    private fun setupDatabase() {
+        Realm.init(this)
+        realm = Realm.getDefaultInstance()
     }
 
     private fun updateDate() {
