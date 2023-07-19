@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.realm.Realm
+import io.realm.RealmResults
 import net.uniquecomputer.spendly.Adapters.RecordsAdapter
 import net.uniquecomputer.spendly.Fragments.AddRecordsFragment
 import net.uniquecomputer.spendly.Model.RecordsModel
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var recordsAdapter: RecordsAdapter
 
-   private lateinit var recordsArrayList: ArrayList<RecordsModel>
+   private lateinit var recordsArrayList: RealmResults<RecordsModel>
 
     private lateinit var realm: Realm
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,12 +46,26 @@ class MainActivity : AppCompatActivity() {
             updateDate()
         }
 
-        recordsArrayList = ArrayList()
-        recordsArrayList.add(RecordsModel("INCOME", 549.52, "Business", "Cash","Some Nots", Date(),1))
-        recordsArrayList.add(RecordsModel(Constants.INCOME, 148.23, "Loan", "Bank"," Nots", Date(),2))
-        recordsArrayList.add(RecordsModel("EXPENSE", 41.00, "Rent", "Card","Card Nots", Date(),6))
-        recordsArrayList.add(RecordsModel("EXPENSE", 6.00, "Other", "Wallet","Wallet Payment", Date(),8))
-        recordsArrayList.add(RecordsModel("INCOME", 79.23, "Salary", "Paytm","Salary Paytm", Date(),3))
+
+//        recordsArrayList.add()
+//        recordsArrayList.add()
+//        recordsArrayList.add()
+//        recordsArrayList.add(RecordsModel("EXPENSE", 6.00, "Other", "Wallet","Wallet Payment", Date(),8))
+//        recordsArrayList.add()
+
+        realm.beginTransaction()
+        realm.copyToRealmOrUpdate(RecordsModel("INCOME", 549.52, "Business", "Cash","Some Nots", Date(),Date().time))
+        realm.copyToRealmOrUpdate(RecordsModel(Constants.INCOME, 148.23, "Loan", "Bank"," Nots", Date(),Date().time))
+        realm.copyToRealmOrUpdate(RecordsModel("EXPENSE", 41.00, "Rent", "Card","Card Nots", Date(),Date().time))
+        realm.copyToRealmOrUpdate(RecordsModel("EXPENSE", 6.00, "Other", "Wallet","Wallet Payment", Date(),Date().time))
+        realm.copyToRealmOrUpdate(RecordsModel("INCOME", 79.23, "Salary", "Paytm","Salary Paytm", Date(),Date().time))
+        realm.commitTransaction()
+
+        recordsArrayList = realm.where(RecordsModel::class.java).findAll()
+
+//        realm.where(RecordsModel::class.java).findAll().forEach {
+//            recordsArrayList.add(it)
+//        }
 
         recordsAdapter = RecordsAdapter(this, recordsArrayList)
         binding.recordsList.adapter = recordsAdapter

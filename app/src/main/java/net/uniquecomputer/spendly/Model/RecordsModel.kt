@@ -1,6 +1,10 @@
 package net.uniquecomputer.spendly.Model
 
+import io.realm.RealmObject
 import java.util.Date
+import io.realm.annotations.PrimaryKey
 
-class RecordsModel(val type : String , val amount : Double,val category : String , val account : String , val note : String, val date : Date, val id : Long){
+class RecordsModel (val type : String , var amount : Double,var category : String , var account : String , var note : String, var date : Date, @PrimaryKey var id : Long ) : RealmObject() {
+
+
 }
