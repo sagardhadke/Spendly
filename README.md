@@ -4,7 +4,9 @@ Expense Manager App with MVVM &amp; Realm Database
 ## 1.1 App Version Features
 
 - 📣 100% FREE & No Ads!
-- Income and expense Management 
+- Income and expense Management
+- check completely monthly expenses
+
 
 
 ## Feedback
