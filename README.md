@@ -1,6 +1,12 @@
 # Spendly
 Expense Manager App with MVVM &amp; Realm Database
 
+## 1.1 App Version Features
+
+- 📣 100% FREE & No Ads!
+- Income and expense Management 
+
+
 ## Feedback
 
 If you have any feedback, please reach out to us at peaceunique2003@gmail.com
